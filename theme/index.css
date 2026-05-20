@@ -1,0 +1,9 @@
+/**
+ * Theme Entry Point
+ * 
+ * Imports all design token files.
+ * Imported by global.css
+ */
+
+@import "./colors.css";
+@import "./typography.css";

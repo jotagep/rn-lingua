@@ -1,0 +1,35 @@
+/**
+ * Design System Typography Tokens
+ * 
+ * Based on Lingua App Design System
+ * Font: Poppins
+ */
+
+@theme {
+	/* ============================================
+	   FONT FAMILIES
+	   ============================================
+	   These map to fonts loaded via expo-font in app/_layout.tsx
+	   We define each weight separately for React Native compatibility
+	*/
+	--font-poppins-regular: "Poppins-Regular", sans-serif;
+	--font-poppins-medium: "Poppins-Medium", sans-serif;
+	--font-poppins-semibold: "Poppins-SemiBold", sans-serif;
+	--font-poppins-bold: "Poppins-Bold", sans-serif;
+
+	/* ============================================
+	   LINE HEIGHTS
+	   ============================================ */
+	--leading-tight: 1.2;
+	--leading-snug: 1.3;
+	--leading-normal: 1.4;
+	--leading-relaxed: 1.6;
+
+	/* ============================================
+	   FONT WEIGHTS
+	   ============================================ */
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+}
