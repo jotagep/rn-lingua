@@ -1,7 +1,8 @@
 import { images } from "@/constants/images"
+import PrimaryButton from "@/components/PrimaryButton"
 import { Ionicons } from "@expo/vector-icons"
 import { useRouter } from "expo-router"
-import { Image, Text, TouchableOpacity, View } from "react-native"
+import { Image, Text, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 export default function OnboardingScreen() {
@@ -58,19 +59,18 @@ export default function OnboardingScreen() {
 				</View>
 
 				{/* Get Started Button */}
-				<TouchableOpacity
-					className="bg-lingua-purple rounded-2xl h-14 flex-row items-center justify-center"
-					activeOpacity={0.9}
-					onPress={() => router.replace("/")}
-				>
-					<Text className="text-h4 text-white">Get Started</Text>
-					<Ionicons
-						name="chevron-forward"
-						size={20}
-						color="white"
-						className="ml-1 -mt-0.5"
-					/>
-				</TouchableOpacity>
+				<PrimaryButton
+					title="Get Started"
+					onPress={() => router.push("/(auth)/sign-up")}
+					icon={
+						<Ionicons
+							name="chevron-forward"
+							size={20}
+							color="white"
+							style={{ marginLeft: 4 }}
+						/>
+					}
+				/>
 			</View>
 		</SafeAreaView>
 	)
