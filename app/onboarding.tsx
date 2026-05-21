@@ -61,7 +61,7 @@ export default function OnboardingScreen() {
 				{/* Get Started Button */}
 				<PrimaryButton
 					title="Get Started"
-					onPress={() => router.push("/(auth)/sign-up")}
+					onPress={() => router.push("/(auth)/sign-in")}
 					icon={
 						<Ionicons
 							name="chevron-forward"

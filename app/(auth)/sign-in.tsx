@@ -1,8 +1,9 @@
 import BackButton from "@/components/BackButton"
 import PrimaryButton from "@/components/PrimaryButton"
 import SocialAuthButtons from "@/components/SocialAuthButtons"
-import VerificationModal from "@/components/VerificationModal"
 import { images } from "@/constants/images"
+import { isClerkAPIResponseError, useClerk, useSignIn } from "@clerk/expo"
+import { Ionicons } from "@expo/vector-icons"
 import { useRouter } from "expo-router"
 import { useState } from "react"
 import {
@@ -19,8 +20,44 @@ import { SafeAreaView } from "react-native-safe-area-context"
 
 export default function SignInScreen() {
 	const router = useRouter()
+	const { signIn, fetchStatus } = useSignIn()
+	const clerk = useClerk()
 	const [email, setEmail] = useState("")
-	const [showVerification, setShowVerification] = useState(false)
+	const [password, setPassword] = useState("")
+	const [showPassword, setShowPassword] = useState(false)
+	const [error, setError] = useState("")
+
+	const isSubmitting = fetchStatus === "fetching"
+
+	const handleSignIn = async () => {
+		if (!signIn) return
+		setError("")
+
+		try {
+			const { error: passwordError } = await signIn.password({
+				emailAddress: email,
+				password,
+			})
+
+			if (passwordError) {
+				setError(passwordError.message || "Invalid email or password")
+				return
+			}
+
+			if (signIn.status === "complete" && signIn.createdSessionId) {
+				await clerk.setActive({ session: signIn.createdSessionId })
+				router.replace("/")
+			} else {
+				setError("Sign in failed. Please try again.")
+			}
+		} catch (err) {
+			if (isClerkAPIResponseError(err)) {
+				setError(err.errors[0]?.message || "Invalid email or password")
+			} else {
+				setError("Something went wrong. Please try again.")
+			}
+		}
+	}
 
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: "#ffffff" }}>
@@ -53,7 +90,7 @@ export default function SignInScreen() {
 						</View>
 
 						{/* Email input */}
-						<View className="mb-6">
+						<View className="mb-4">
 							<Text className="text-body-small text-text-secondary mb-1.5 ml-1">
 								Email
 							</Text>
@@ -76,13 +113,55 @@ export default function SignInScreen() {
 									fontFamily: "Poppins-Regular",
 									color: "#0d132b",
 								}}
+								editable={!isSubmitting}
 							/>
 						</View>
+
+						{/* Password input */}
+						<View className="mb-6">
+							<Text className="text-body-small text-text-secondary mb-1.5 ml-1">
+								Password
+							</Text>
+							<View className="flex-row items-center h-14 rounded-xl border border-border bg-white px-4">
+								<TextInput
+									value={password}
+									onChangeText={setPassword}
+									placeholder="••••••••"
+									placeholderTextColor="#9ca3af"
+									secureTextEntry={!showPassword}
+									style={{
+										flex: 1,
+										fontSize: 16,
+										lineHeight: 26,
+										fontFamily: "Poppins-Regular",
+										color: "#0d132b",
+									}}
+									editable={!isSubmitting}
+								/>
+								<TouchableOpacity
+									onPress={() => setShowPassword(!showPassword)}
+									activeOpacity={0.7}
+								>
+									<Ionicons
+										name={showPassword ? "eye-off-outline" : "eye-outline"}
+										size={22}
+										color="#6b7280"
+									/>
+								</TouchableOpacity>
+							</View>
+						</View>
+
+						{error ? (
+							<Text className="text-error text-body-small mb-4 ml-1">
+								{error}
+							</Text>
+						) : null}
 
 						{/* Sign In button */}
 						<PrimaryButton
 							title="Sign In"
-							onPress={() => setShowVerification(true)}
+							onPress={handleSignIn}
+							disabled={!email || !password || isSubmitting}
 						/>
 
 						{/* Divider */}
@@ -114,11 +193,6 @@ export default function SignInScreen() {
 					</View>
 				</ScrollView>
 			</KeyboardAvoidingView>
-
-			<VerificationModal
-				visible={showVerification}
-				onClose={() => setShowVerification(false)}
-			/>
 		</SafeAreaView>
 	)
 }

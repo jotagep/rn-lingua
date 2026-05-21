@@ -1,5 +1,4 @@
-import { useRouter } from "expo-router"
-import { useRef, useState } from "react"
+import { useState, useRef } from "react"
 import {
 	KeyboardAvoidingView,
 	Modal,
@@ -9,18 +8,26 @@ import {
 	TextInput,
 	TouchableOpacity,
 	View,
+	ActivityIndicator,
 } from "react-native"
 
 interface VerificationModalProps {
 	visible: boolean
 	onClose: () => void
+	onVerify: (code: string) => Promise<void>
+	onResend: () => Promise<void>
+	error?: string
+	isVerifying?: boolean
 }
 
 export default function VerificationModal({
 	visible,
 	onClose,
+	onVerify,
+	onResend,
+	error,
+	isVerifying,
 }: VerificationModalProps) {
-	const router = useRouter()
 	const [code, setCode] = useState(["", "", "", "", "", ""])
 	const inputRefs = useRef<(TextInput | null)[]>([])
 
@@ -34,18 +41,25 @@ export default function VerificationModal({
 		if (text && index < 5) {
 			inputRefs.current[index + 1]?.focus()
 		}
-
-		const joined = newCode.join("")
-		if (joined.length === 6) {
-			onClose()
-			router.replace("/")
-		}
 	}
 
 	const handleKeyPress = (e: { nativeEvent: { key: string } }, index: number) => {
 		if (e.nativeEvent.key === "Backspace" && !code[index] && index > 0) {
 			inputRefs.current[index - 1]?.focus()
 		}
+	}
+
+	const joinedCode = code.join("")
+	const isComplete = joinedCode.length === 6
+
+	const handleVerify = async () => {
+		if (!isComplete) return
+		await onVerify(joinedCode)
+	}
+
+	const handleResend = async () => {
+		setCode(["", "", "", "", "", ""])
+		await onResend()
 	}
 
 	return (
@@ -83,19 +97,39 @@ export default function VerificationModal({
 								onKeyPress={(e) => handleKeyPress(e, index)}
 								keyboardType="number-pad"
 								maxLength={1}
-								style={styles.codeInput}
+								style={[
+									styles.codeInput,
+									digit ? styles.codeInputFilled : null,
+								]}
+								editable={!isVerifying}
 							/>
 						))}
 					</View>
 
+					{error ? <Text style={styles.errorText}>{error}</Text> : null}
+
 					<TouchableOpacity
-						style={styles.verifyButton}
-						onPress={() => {
-							onClose()
-							router.replace("/")
-						}}
+						style={[
+							styles.verifyButton,
+							(!isComplete || isVerifying) && styles.verifyButtonDisabled,
+						]}
+						onPress={handleVerify}
+						disabled={!isComplete || isVerifying}
 					>
-						<Text style={styles.verifyButtonText}>Verify</Text>
+						{isVerifying ? (
+							<ActivityIndicator color="#ffffff" />
+						) : (
+							<Text style={styles.verifyButtonText}>Verify</Text>
+						)}
+					</TouchableOpacity>
+
+					<TouchableOpacity
+						style={styles.resendButton}
+						onPress={handleResend}
+						disabled={isVerifying}
+						activeOpacity={0.7}
+					>
+						<Text style={styles.resendButtonText}>Resend code</Text>
 					</TouchableOpacity>
 				</View>
 			</KeyboardAvoidingView>
@@ -150,7 +184,7 @@ const styles = StyleSheet.create({
 	codeContainer: {
 		flexDirection: "row",
 		justifyContent: "space-between",
-		marginBottom: 32,
+		marginBottom: 16,
 	},
 	codeInput: {
 		width: 48,
@@ -165,6 +199,18 @@ const styles = StyleSheet.create({
 		fontFamily: "Poppins-SemiBold",
 		color: "#0d132b",
 	},
+	codeInputFilled: {
+		borderColor: "#6c4ef5",
+		backgroundColor: "#ffffff",
+	},
+	errorText: {
+		fontSize: 12,
+		lineHeight: 18,
+		fontFamily: "Poppins-Regular",
+		color: "#ef4444",
+		textAlign: "center",
+		marginBottom: 16,
+	},
 	verifyButton: {
 		backgroundColor: "#6c4ef5",
 		borderRadius: 16,
@@ -172,10 +218,25 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 	},
+	verifyButtonDisabled: {
+		opacity: 0.5,
+	},
 	verifyButtonText: {
 		fontSize: 16,
 		lineHeight: 22,
 		fontFamily: "Poppins-Medium",
 		color: "#ffffff",
+	},
+	resendButton: {
+		marginTop: 16,
+		alignItems: "center",
+		justifyContent: "center",
+		paddingVertical: 8,
+	},
+	resendButtonText: {
+		fontSize: 14,
+		lineHeight: 22,
+		fontFamily: "Poppins-Medium",
+		color: "#6c4ef5",
 	},
 })

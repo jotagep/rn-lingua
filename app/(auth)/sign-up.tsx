@@ -3,6 +3,7 @@ import PrimaryButton from "@/components/PrimaryButton"
 import SocialAuthButtons from "@/components/SocialAuthButtons"
 import VerificationModal from "@/components/VerificationModal"
 import { images } from "@/constants/images"
+import { isClerkAPIResponseError, useClerk, useSignUp } from "@clerk/expo"
 import { Ionicons } from "@expo/vector-icons"
 import { useRouter } from "expo-router"
 import { useState } from "react"
@@ -20,10 +21,94 @@ import { SafeAreaView } from "react-native-safe-area-context"
 
 export default function SignUpScreen() {
 	const router = useRouter()
+	const { signUp, fetchStatus } = useSignUp()
+	const clerk = useClerk()
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 	const [showPassword, setShowPassword] = useState(false)
 	const [showVerification, setShowVerification] = useState(false)
+	const [verificationError, setVerificationError] = useState("")
+	const [isVerifying, setIsVerifying] = useState(false)
+
+	const isSubmitting = fetchStatus === "fetching"
+
+	const handleSignUp = async () => {
+		if (!signUp) return
+		setVerificationError("")
+
+		try {
+			const { error: passwordError } = await signUp.password({
+				emailAddress: email,
+				password,
+			})
+
+			if (passwordError) {
+				setVerificationError(passwordError.message || "Something went wrong")
+				return
+			}
+
+			const { error: sendError } = await signUp.verifications.sendEmailCode()
+
+			if (sendError) {
+				setVerificationError(sendError.message || "Failed to send code")
+				return
+			}
+
+			setShowVerification(true)
+		} catch (err) {
+			if (isClerkAPIResponseError(err)) {
+				setVerificationError(err.errors[0]?.message || "Something went wrong")
+			} else {
+				setVerificationError("Something went wrong. Please try again.")
+			}
+		}
+	}
+
+	const handleVerify = async (code: string) => {
+		if (!signUp) return
+		setIsVerifying(true)
+		setVerificationError("")
+
+		try {
+			const { error: verifyError } = await signUp.verifications.verifyEmailCode({
+				code,
+			})
+
+			if (verifyError) {
+				setVerificationError(verifyError.message || "Invalid code. Please try again.")
+				setIsVerifying(false)
+				return
+			}
+
+			if (signUp.status === "complete" && signUp.createdSessionId) {
+				await clerk.setActive({ session: signUp.createdSessionId })
+				setShowVerification(false)
+				router.replace("/")
+			} else {
+				setVerificationError("Verification failed. Please try again.")
+				setIsVerifying(false)
+			}
+		} catch (err) {
+			if (isClerkAPIResponseError(err)) {
+				setVerificationError(err.errors[0]?.message || "Invalid code. Please try again.")
+			} else {
+				setVerificationError("Something went wrong. Please try again.")
+			}
+			setIsVerifying(false)
+		}
+	}
+
+	const handleResend = async () => {
+		if (!signUp) return
+		try {
+			const { error } = await signUp.verifications.sendEmailCode()
+			if (error) {
+				console.error("Resend error:", error.message)
+			}
+		} catch (err) {
+			console.error("Resend error:", err)
+		}
+	}
 
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: "#ffffff" }}>
@@ -77,6 +162,7 @@ export default function SignUpScreen() {
 										fontFamily: "Poppins-Regular",
 										color: "#0d132b",
 									}}
+									editable={!isSubmitting}
 								/>
 							</View>
 
@@ -99,6 +185,7 @@ export default function SignUpScreen() {
 											fontFamily: "Poppins-Regular",
 											color: "#0d132b",
 										}}
+										editable={!isSubmitting}
 									/>
 									<TouchableOpacity
 										onPress={() => setShowPassword(!showPassword)}
@@ -114,12 +201,17 @@ export default function SignUpScreen() {
 							</View>
 						</View>
 
-						{/* Email input */}
+						{verificationError && !showVerification ? (
+							<Text className="text-error text-body-small mb-4 ml-1">
+								{verificationError}
+							</Text>
+						) : null}
 
 						{/* Sign Up button */}
 						<PrimaryButton
 							title="Sign Up"
-							onPress={() => setShowVerification(true)}
+							onPress={handleSignUp}
+							disabled={!email || !password || isSubmitting}
 						/>
 
 						{/* Divider */}
@@ -148,6 +240,9 @@ export default function SignUpScreen() {
 								</Text>
 							</TouchableOpacity>
 						</View>
+
+						{/* Clerk captcha element for bot protection */}
+						<View nativeID="clerk-captcha" />
 					</View>
 				</ScrollView>
 			</KeyboardAvoidingView>
@@ -155,6 +250,10 @@ export default function SignUpScreen() {
 			<VerificationModal
 				visible={showVerification}
 				onClose={() => setShowVerification(false)}
+				onVerify={handleVerify}
+				onResend={handleResend}
+				error={verificationError}
+				isVerifying={isVerifying}
 			/>
 		</SafeAreaView>
 	)

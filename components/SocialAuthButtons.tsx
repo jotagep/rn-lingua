@@ -1,25 +1,34 @@
+import { useSSO } from "@clerk/expo"
 import { Ionicons } from "@expo/vector-icons"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
-const providers = [
-	{ name: "Google", icon: "logo-google" as const, color: "#DB4437" },
-	{ name: "Facebook", icon: "logo-facebook" as const, color: "#1877F2" },
-	{ name: "Apple", icon: "logo-apple" as const, color: "#000000" },
-]
-
 export default function SocialAuthButtons() {
+	const { startSSOFlow } = useSSO()
+
+	const handleGoogleSignIn = async () => {
+		try {
+			const { createdSessionId, setActive } = await startSSOFlow({
+				strategy: "oauth_google",
+			})
+
+			if (createdSessionId && setActive) {
+				await setActive({ session: createdSessionId })
+			}
+		} catch (err) {
+			console.error("Google sign-in error:", err)
+		}
+	}
+
 	return (
 		<View style={styles.container}>
-			{providers.map((provider) => (
-				<TouchableOpacity
-					key={provider.name}
-					style={styles.button}
-					activeOpacity={0.8}
-				>
-					<Ionicons name={provider.icon} size={20} color={provider.color} />
-					<Text style={styles.text}>Continue with {provider.name}</Text>
-				</TouchableOpacity>
-			))}
+			<TouchableOpacity
+				style={styles.button}
+				activeOpacity={0.8}
+				onPress={handleGoogleSignIn}
+			>
+				<Ionicons name="logo-google" size={20} color="#DB4437" />
+				<Text style={styles.text}>Continue with Google</Text>
+			</TouchableOpacity>
 		</View>
 	)
 }
