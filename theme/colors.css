@@ -31,4 +31,11 @@
 	--color-border: #e5e7eb;
 	--color-surface: #f6f7fb;
 	--color-background: #ffffff;
+
+	/* ============================================
+	   BUBBLE COLORS
+	   ============================================ */
+	--color-bubble-hello: #eef2ff;
+	--color-bubble-hola: #e0e7ff;
+	--color-bubble-nihao: #fff1f0;
 }
