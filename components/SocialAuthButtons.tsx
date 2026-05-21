@@ -1,5 +1,6 @@
 import { useSSO } from "@clerk/expo"
 import { Ionicons } from "@expo/vector-icons"
+import * as Linking from "expo-linking"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 export default function SocialAuthButtons() {
@@ -9,6 +10,7 @@ export default function SocialAuthButtons() {
 		try {
 			const { createdSessionId, setActive } = await startSSOFlow({
 				strategy: "oauth_google",
+				redirectUrl: Linking.createURL("/sso-callback", { scheme: "rnlingua" }),
 			})
 
 			if (createdSessionId && setActive) {
