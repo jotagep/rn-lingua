@@ -6,6 +6,7 @@ interface PrimaryButtonProps {
 	onPress: () => void
 	icon?: ReactNode
 	size?: "default" | "compact"
+	variant?: "primary" | "ghost"
 	style?: ViewStyle
 	disabled?: boolean
 }
@@ -15,10 +16,12 @@ export default function PrimaryButton({
 	onPress,
 	icon,
 	size = "default",
+	variant = "primary",
 	style,
 	disabled,
 }: PrimaryButtonProps) {
 	const isDefault = size === "default"
+	const isGhost = variant === "ghost"
 
 	return (
 		<TouchableOpacity
@@ -28,10 +31,11 @@ export default function PrimaryButton({
 			style={[
 				styles.button,
 				isDefault ? styles.defaultSize : styles.compactSize,
+				isGhost ? styles.ghost : styles.primary,
 				style,
 			]}
 		>
-			<Text style={styles.text}>{title}</Text>
+			<Text style={[styles.text, isGhost && styles.ghostText]}>{title}</Text>
 			{icon}
 		</TouchableOpacity>
 	)
@@ -39,10 +43,17 @@ export default function PrimaryButton({
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: "#6c4ef5",
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "center",
+	},
+	primary: {
+		backgroundColor: "#6c4ef5",
+	},
+	ghost: {
+		backgroundColor: "#ffffff",
+		borderWidth: 1,
+		borderColor: "#e5e7eb",
 	},
 	defaultSize: {
 		borderRadius: 16,
@@ -58,5 +69,8 @@ const styles = StyleSheet.create({
 		lineHeight: 22,
 		fontFamily: "Poppins-Medium",
 		color: "#ffffff",
+	},
+	ghostText: {
+		color: "#0d132b",
 	},
 })

@@ -25,6 +25,7 @@ export interface Language {
 	direction: TextDirection
 	color: string // Theme hex color, e.g. "#58CC02"
 	isAvailable: boolean
+	learnerCount: string // e.g. "28.4M learners"
 }
 
 // ─── Unit ────────────────────────────────────────────────────────────────────
