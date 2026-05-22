@@ -1,5 +1,27 @@
+import { cn } from "@/lib/cn"
 import { ReactNode } from "react"
-import { StyleSheet, Text, TouchableOpacity, ViewStyle } from "react-native"
+import { Text, TouchableOpacity, ViewStyle } from "react-native"
+
+export type ThemeTextColor =
+	| "error"
+	| "success"
+	| "warning"
+	| "info"
+	| "text-primary"
+	| "text-secondary"
+	| "lingua-purple"
+	| "white"
+
+const textColorMap: Record<ThemeTextColor, string> = {
+	error: "text-error",
+	success: "text-success",
+	warning: "text-warning",
+	info: "text-info",
+	"text-primary": "text-text-primary",
+	"text-secondary": "text-text-secondary",
+	"lingua-purple": "text-lingua-purple",
+	white: "text-white",
+}
 
 interface PrimaryButtonProps {
 	title: string
@@ -9,6 +31,7 @@ interface PrimaryButtonProps {
 	variant?: "primary" | "ghost"
 	style?: ViewStyle
 	disabled?: boolean
+	textColor?: ThemeTextColor
 }
 
 export default function PrimaryButton({
@@ -19,8 +42,8 @@ export default function PrimaryButton({
 	variant = "primary",
 	style,
 	disabled,
+	textColor,
 }: PrimaryButtonProps) {
-	const isDefault = size === "default"
 	const isGhost = variant === "ghost"
 
 	return (
@@ -28,49 +51,25 @@ export default function PrimaryButton({
 			activeOpacity={0.9}
 			onPress={onPress}
 			disabled={disabled}
-			style={[
-				styles.button,
-				isDefault ? styles.defaultSize : styles.compactSize,
-				isGhost ? styles.ghost : styles.primary,
-				style,
-			]}
+			className={cn(
+				"flex-row items-center justify-center px-4",
+				size === "default"
+					? "w-full h-14 rounded-2xl"
+					: "self-start rounded-xl py-3",
+				isGhost ? "bg-background border border-border" : "bg-lingua-purple",
+			)}
+			style={style}
 		>
-			<Text style={[styles.text, isGhost && styles.ghostText]}>{title}</Text>
+			<Text
+				className={cn(
+					"text-lg leading-5",
+					isGhost ? "text-text-primary" : "text-white",
+					textColor && textColorMap[textColor],
+				)}
+			>
+				{title}
+			</Text>
 			{icon}
 		</TouchableOpacity>
 	)
 }
-
-const styles = StyleSheet.create({
-	button: {
-		flexDirection: "row",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	primary: {
-		backgroundColor: "#6c4ef5",
-	},
-	ghost: {
-		backgroundColor: "#ffffff",
-		borderWidth: 1,
-		borderColor: "#e5e7eb",
-	},
-	defaultSize: {
-		borderRadius: 16,
-		height: 56,
-	},
-	compactSize: {
-		borderRadius: 12,
-		paddingVertical: 12,
-		paddingHorizontal: 16,
-	},
-	text: {
-		fontSize: 16,
-		lineHeight: 22,
-		fontFamily: "Poppins-Medium",
-		color: "#ffffff",
-	},
-	ghostText: {
-		color: "#0d132b",
-	},
-})

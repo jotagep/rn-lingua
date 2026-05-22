@@ -15,7 +15,7 @@ export default function OnboardingScreen() {
 				<View className="flex-row items-center justify-center gap-2">
 					<Image
 						source={images.mascotLogo}
-						className="w-12 h-12"
+						className="w-12 h-12 will-change-variable"
 						resizeMode="contain"
 					/>
 					<Text className="text-h2 text-text-primary">Lingua</Text>
@@ -52,7 +52,7 @@ export default function OnboardingScreen() {
 
 						<Image
 							source={images.mascotWelcome}
-							className="w-80 h-80"
+							className="w-80 h-80 will-change-variable"
 							resizeMode="contain"
 						/>
 					</View>

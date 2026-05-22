@@ -6,6 +6,7 @@
  */
 
 import type { Lesson, LessonMap } from "@/types/learning"
+import { getUnitsForLanguage } from "./units"
 
 // ─── Helper to keep IDs readable ─────────────────────────────────────────────
 const mc = (
@@ -1567,8 +1568,6 @@ export const getLessonsForUnit = (unitId: string): Lesson[] =>
 		.sort((a, b) => a.order - b.order)
 
 export const getLessonsForLanguage = (languageId: string): Lesson[] => {
-	// Import here to avoid circular dependency at module load time if needed
-	const { getUnitsForLanguage } = require("./units")
 	const unitIds = getUnitsForLanguage(languageId).map((u) => u.id)
 	return Object.values(lessons)
 		.filter((l) => unitIds.includes(l.unitId))

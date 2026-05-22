@@ -82,11 +82,11 @@ export default function SignInScreen() {
 
 						{/* Mascot */}
 						<View className="items-center justify-center -mb-18">
-							<Image
-								source={images.mascotAuth}
-								className="w-48 h-48"
-								resizeMode="contain"
-							/>
+						<Image
+							source={images.mascotAuth}
+							className="w-48 h-48 will-change-variable"
+							resizeMode="contain"
+						/>
 						</View>
 
 						{/* Email input */}

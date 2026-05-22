@@ -12,10 +12,12 @@
 	   These map to fonts loaded via expo-font in app/_layout.tsx
 	   We define each weight separately for React Native compatibility
 	*/
-	--font-poppins-regular: "Poppins-Regular, sans-serif";
-	--font-poppins-medium: "Poppins-Medium, sans-serif";
-	--font-poppins-semibold: "Poppins-SemiBold, sans-serif";
-	--font-poppins-bold: "Poppins-Bold, sans-serif";
+	--font-sans: "Poppins-Regular";
+
+	--font-poppins-regular: "Poppins-Regular";
+	--font-poppins-medium: "Poppins-Medium";
+	--font-poppins-semibold: "Poppins-SemiBold";
+	--font-poppins-bold: "Poppins-Bold";
 
 	/* ============================================
 	   LINE HEIGHTS

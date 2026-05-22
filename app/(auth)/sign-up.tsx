@@ -133,11 +133,11 @@ export default function SignUpScreen() {
 						<View>
 							{/* Mascot */}
 							<View className="items-center justify-center -mb-18">
-								<Image
-									source={images.mascotAuth}
-									className="w-48 h-48"
-									resizeMode="contain"
-								/>
+							<Image
+								source={images.mascotAuth}
+								className="w-48 h-48 will-change-variable"
+								resizeMode="contain"
+							/>
 							</View>
 							<View className="mb-4">
 								<Text className="text-body-small text-text-secondary mb-1.5 ml-1">

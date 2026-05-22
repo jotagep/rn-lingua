@@ -33,7 +33,7 @@ export default function LanguageScreen() {
 
 	const handleConfirm = () => {
 		if (selectedLanguageId) {
-			router.back()
+			router.replace("/")
 		}
 	}
 
@@ -97,11 +97,11 @@ export default function LanguageScreen() {
 								>
 									{/* Flag */}
 									<View className="w-10 h-10 rounded-full overflow-hidden bg-surface">
-										<Image
-											source={{ uri: language.flag }}
-											className="w-full h-full"
-											resizeMode="cover"
-										/>
+											<Image
+												source={{ uri: language.flag }}
+												className="w-full h-full will-change-variable"
+												resizeMode="cover"
+											/>
 									</View>
 
 									{/* Language Info */}
@@ -154,7 +154,7 @@ export default function LanguageScreen() {
 					<View className="items-center justify-center mt-4 -mb-8 p-4">
 						<Image
 							source={images.earth}
-							className="w-full h-48"
+							className="w-full h-48 will-change-variable"
 							resizeMode="cover"
 						/>
 					</View>
