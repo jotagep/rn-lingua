@@ -1,5 +1,5 @@
 import { images } from "@/constants/images"
-import PrimaryButton from "@/components/PrimaryButton"
+import PrimaryButton from "@/components/button/PrimaryButton"
 import { Ionicons } from "@expo/vector-icons"
 import { useRouter } from "expo-router"
 import { Image, Text, View } from "react-native"

@@ -1,5 +1,5 @@
-import BackButton from "@/components/BackButton"
-import PrimaryButton from "@/components/PrimaryButton"
+import BackButton from "@/components/button/BackButton"
+import PrimaryButton from "@/components/button/PrimaryButton"
 import { images } from "@/constants/images"
 import { availableLanguages } from "@/data/languages"
 import { useLanguageStore } from "@/store/languageStore"
