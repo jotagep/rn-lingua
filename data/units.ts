@@ -17,7 +17,15 @@ export const units: UnitMap = {
 		order: 1,
 		color: "#58CC02",
 		icon: "👋",
-		lessonIds: ["es-greetings", "es-introduce-yourself", "es-common-phrases"],
+		lessonIds: [
+			"es-greetings",
+			"es-introduce-yourself",
+			"es-common-phrases",
+			"es-daily-life",
+			"es-at-the-cafe",
+			"es-shopping",
+			"es-family-friends",
+		],
 	},
 	"es-travel": {
 		id: "es-travel",
@@ -39,7 +47,15 @@ export const units: UnitMap = {
 		order: 1,
 		color: "#1CB0F6",
 		icon: "👋",
-		lessonIds: ["fr-greetings", "fr-introduce-yourself", "fr-common-phrases"],
+		lessonIds: [
+			"fr-greetings",
+			"fr-introduce-yourself",
+			"fr-common-phrases",
+			"fr-daily-life",
+			"fr-at-the-cafe",
+			"fr-shopping",
+			"fr-family-friends",
+		],
 	},
 
 	// ─── Japanese ───────────────────────────────────────────────────────────────
@@ -51,7 +67,15 @@ export const units: UnitMap = {
 		order: 1,
 		color: "#FF4B4B",
 		icon: "👋",
-		lessonIds: ["ja-greetings", "ja-introduce-yourself", "ja-common-phrases"],
+		lessonIds: [
+			"ja-greetings",
+			"ja-introduce-yourself",
+			"ja-common-phrases",
+			"ja-daily-life",
+			"ja-at-the-cafe",
+			"ja-shopping",
+			"ja-family-friends",
+		],
 	},
 }
 

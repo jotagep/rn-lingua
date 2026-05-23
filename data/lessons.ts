@@ -1556,6 +1556,1254 @@ export const lessons: LessonMap = {
 			closingLine: "とても上手でした。日本の文化を大切にしてくださいね。",
 		},
 	},
+
+	// ═════════════════════════════════════════════════════════════════════════════
+	// SPANISH — Extended
+	// ═════════════════════════════════════════════════════════════════════════════
+
+	"es-daily-life": {
+		id: "es-daily-life",
+		unitId: "es-basics",
+		title: "Daily Life",
+		description: "Talk about routines, time, and everyday activities.",
+		order: 4,
+		activities: [
+			mc(
+				"es-dl-1",
+				"Select the correct phrase",
+				"How do you ask 'What time is it?' in Spanish?",
+				["¿Qué hora es?", "¿Cuánto cuesta?", "¿Dónde está?", "¿Cómo te llamas?"],
+				0,
+				"'¿Qué hora es?' literally means 'What hour is it?' and is the standard way to ask for the time."
+			),
+			tr(
+				"es-dl-2",
+				"Translate to Spanish",
+				"I wake up at seven",
+				"en",
+				"es",
+				"Me despierto a las siete",
+				["Despierto a las siete"]
+			),
+			mc(
+				"es-dl-3",
+				"Choose the best response",
+				"Someone asks '¿Cómo está tu familia?' What do you reply?",
+				["Está bien, gracias", "No entiendo", "Lo siento", "Por favor"],
+				0,
+				"'Está bien, gracias' means 'They are fine, thanks' — a polite reply about family."
+			),
+		],
+		vocabulary: [
+			{
+				id: "es-v-hora",
+				word: "hora",
+				translation: "hour / time",
+				pronunciation: "OH-rah",
+				partOfSpeech: "noun",
+				exampleSentence: "¿Qué hora es?",
+				exampleTranslation: "What time is it?",
+			},
+			{
+				id: "es-v-despertar",
+				word: "despertar",
+				translation: "to wake up",
+				pronunciation: "dehs-pehr-TAHR",
+				partOfSpeech: "verb",
+				exampleSentence: "Me despierto temprano.",
+				exampleTranslation: "I wake up early.",
+			},
+			{
+				id: "es-v-familia",
+				word: "familia",
+				translation: "family",
+				pronunciation: "fah-MEE-lee-ah",
+				partOfSpeech: "noun",
+				exampleSentence: "Mi familia es grande.",
+				exampleTranslation: "My family is big.",
+			},
+		],
+		phrases: [
+			{
+				id: "es-p-dl-1",
+				text: "A qué hora...",
+				translation: "At what time...",
+				context: "Asking about a specific time",
+				pronunciation: "ah keh OH-rah",
+			},
+		],
+		goals: [
+			{
+				id: "es-dl-goal-1",
+				description: "Ask and tell the time",
+				icon: "🕒",
+				type: "speak",
+			},
+			{
+				id: "es-dl-goal-2",
+				description: "Talk about your morning routine",
+				icon: "☀️",
+				type: "speak",
+			},
+		],
+		xpReward: 15,
+		estimatedTimeMinutes: 4,
+		aiTeacherPrompt: {
+			role: "Beginner Spanish Teacher",
+			personality: "Relatable and practical",
+			instructions: [
+				"Introduce time-telling phrases in Spanish.",
+				"Talk about daily routines: waking up, eating, working, sleeping.",
+				"Practice asking 'What time is it?' and answering.",
+			],
+			vocabularyFocus: ["hora", "despertar", "familia", "temprano"],
+			scenario: "Describing a typical day in Madrid",
+			openingLine: "Hablemos de tu día. ¿A qué hora te despiertas?",
+			closingLine: "¡Buen trabajo! Ahora puedes describir tu rutina diaria.",
+		},
+		image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&auto=format&fit=crop",
+	},
+
+	"es-at-the-cafe": {
+		id: "es-at-the-cafe",
+		unitId: "es-basics",
+		title: "At the Café",
+		description: "Order drinks and snacks, ask for the bill, and chat casually.",
+		order: 5,
+		activities: [
+			mc(
+				"es-cf-1",
+				"Select the correct phrase",
+				"You want to order a coffee. What do you say?",
+				["Una mesa, por favor", "Un café, por favor", "La cuenta, por favor", "¿Dónde está el baño?"],
+				1,
+				"'Un café, por favor' means 'A coffee, please' — the standard way to order."
+			),
+			tr(
+				"es-cf-2",
+				"Translate to Spanish",
+				"The bill, please",
+				"en",
+				"es",
+				"La cuenta, por favor",
+				["La cuenta"]
+			),
+			mc(
+				"es-cf-3",
+				"Choose the best response",
+				"The waiter asks '¿Algo más?' What do you say if you are finished?",
+				["Sí, por favor", "Nada más, gracias", "Lo siento", "No entiendo"],
+				1,
+				"'Nada más, gracias' means 'Nothing else, thanks' — a polite way to decline."
+			),
+		],
+		vocabulary: [
+			{
+				id: "es-v-cafe",
+				word: "café",
+				translation: "coffee",
+				pronunciation: "kah-FEH",
+				partOfSpeech: "noun",
+				exampleSentence: "Un café con leche, por favor.",
+				exampleTranslation: "A coffee with milk, please.",
+			},
+			{
+				id: "es-v-cuenta",
+				word: "cuenta",
+				translation: "bill / check",
+				pronunciation: "KWEHN-tah",
+				partOfSpeech: "noun",
+				exampleSentence: "¿Me trae la cuenta?",
+				exampleTranslation: "Can you bring me the bill?",
+			},
+			{
+				id: "es-v-mesa",
+				word: "mesa",
+				translation: "table",
+				pronunciation: "MEH-sah",
+				partOfSpeech: "noun",
+				exampleSentence: "Una mesa para dos, por favor.",
+				exampleTranslation: "A table for two, please.",
+			},
+		],
+		phrases: [
+			{
+				id: "es-p-cf-1",
+				text: "¿Algo más?",
+				translation: "Anything else?",
+				context: "Wait asking if you want more",
+				pronunciation: "AHL-goh mahss",
+			},
+		],
+		goals: [
+			{
+				id: "es-cf-goal-1",
+				description: "Order food and drinks at a café",
+				icon: "☕",
+				type: "speak",
+			},
+			{
+				id: "es-cf-goal-2",
+				description: "Ask for the bill politely",
+				icon: "🧾",
+				type: "speak",
+			},
+		],
+		xpReward: 15,
+		estimatedTimeMinutes: 4,
+		aiTeacherPrompt: {
+			role: "Beginner Spanish Teacher",
+			personality: "Warm and casual",
+			instructions: [
+				"Set the scene at a Spanish café.",
+				"Practice ordering drinks and snacks.",
+				"Teach how to ask for the bill and say thank you.",
+			],
+			vocabularyFocus: ["café", "cuenta", "mesa", "por favor", "gracias"],
+			scenario: "Ordering at a local café in Barcelona",
+			openingLine: "Bienvenido a la cafetería. ¿Qué te gustaría pedir?",
+			closingLine: "¡Qué aproveche! Nos vemos pronto.",
+		},
+		image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&auto=format&fit=crop",
+	},
+
+	"es-shopping": {
+		id: "es-shopping",
+		unitId: "es-basics",
+		title: "Shopping",
+		description: "Ask prices, sizes, and pay for items in Spanish.",
+		order: 6,
+		activities: [
+			mc(
+				"es-sh-1",
+				"Select the correct phrase",
+				"How do you ask 'How much does it cost?'",
+				["¿Qué hora es?", "¿Cuánto cuesta?", "¿Dónde está?", "¿Cómo estás?"],
+				1,
+				"'¿Cuánto cuesta?' is the standard way to ask for the price of something."
+			),
+			tr(
+				"es-sh-2",
+				"Translate to Spanish",
+				"I would like to buy this",
+				"en",
+				"es",
+				"Me gustaría comprar esto",
+				["Quiero comprar esto"]
+			),
+			mc(
+				"es-sh-3",
+				"Choose the best response",
+				"The shop assistant asks '¿Necesita bolsa?' What do you say if you don't need one?",
+				["Sí, por favor", "No, gracias", "Lo siento", "No entiendo"],
+				1,
+				"'No, gracias' is the polite way to decline an offer."
+			),
+		],
+		vocabulary: [
+			{
+				id: "es-v-cuesta",
+				word: "cuesta",
+				translation: "costs",
+				pronunciation: "KWEH-stah",
+				partOfSpeech: "verb",
+				exampleSentence: "¿Cuánto cuesta esta camisa?",
+				exampleTranslation: "How much does this shirt cost?",
+			},
+			{
+				id: "es-v-comprar",
+				word: "comprar",
+				translation: "to buy",
+				pronunciation: "kohm-PRAHR",
+				partOfSpeech: "verb",
+				exampleSentence: "Voy a comprar pan.",
+				exampleTranslation: "I am going to buy bread.",
+			},
+			{
+				id: "es-v-bolsa",
+				word: "bolsa",
+				translation: "bag",
+				pronunciation: "BOHL-sah",
+				partOfSpeech: "noun",
+				exampleSentence: "¿Necesita bolsa?",
+				exampleTranslation: "Do you need a bag?",
+			},
+		],
+		phrases: [
+			{
+				id: "es-p-sh-1",
+				text: "¿Puedo probármelo?",
+				translation: "Can I try it on?",
+				context: "In a clothing store",
+				pronunciation: "PWEH-doh proh-BAHR-meh-loh",
+			},
+		],
+		goals: [
+			{
+				id: "es-sh-goal-1",
+				description: "Ask for prices confidently",
+				icon: "💰",
+				type: "speak",
+			},
+			{
+				id: "es-sh-goal-2",
+				description: "Buy items at a shop",
+				icon: "🛍️",
+				type: "speak",
+			},
+		],
+		xpReward: 20,
+		estimatedTimeMinutes: 5,
+		aiTeacherPrompt: {
+			role: "Beginner Spanish Teacher",
+			personality: "Helpful and patient",
+			instructions: [
+				"Set the scene at a Spanish market.",
+				"Practice asking prices and sizes.",
+				"Teach polite phrases for buying and declining.",
+			],
+			vocabularyFocus: ["cuesta", "comprar", "bolsa", "talla", "barato"],
+			scenario: "Shopping at a local mercado in Mexico City",
+			openingLine: "Vamos de compras. ¿Qué te gustaría comprar hoy?",
+			closingLine: "¡Buenas compras! Espero que disfrutes tus artículos.",
+		},
+		image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
+	},
+
+	"es-family-friends": {
+		id: "es-family-friends",
+		unitId: "es-basics",
+		title: "Family & Friends",
+		description: "Talk about family members, relationships, and describe people.",
+		order: 7,
+		activities: [
+			mc(
+				"es-ff-1",
+				"Select the correct word",
+				"What does 'hermano' mean?",
+				["Father", "Brother", "Sister", "Mother"],
+				1,
+				"'Hermano' means 'brother' in Spanish."
+			),
+			tr(
+				"es-ff-2",
+				"Translate to Spanish",
+				"I have two sisters",
+				"en",
+				"es",
+				"Tengo dos hermanas",
+				["Yo tengo dos hermanas"]
+			),
+			mc(
+				"es-ff-3",
+				"Choose the best phrase",
+				"How do you ask 'How old are you?' informally?",
+				["¿Cuántos años tienes?", "¿Qué edad tiene?", "¿Dónde vives?", "¿Cómo te llamas?"],
+				0,
+				"'¿Cuántos años tienes?' is the informal way to ask someone's age."
+			),
+		],
+		vocabulary: [
+			{
+				id: "es-v-hermano",
+				word: "hermano",
+				translation: "brother",
+				pronunciation: "ehr-MAH-noh",
+				partOfSpeech: "noun",
+				exampleSentence: "Mi hermano es alto.",
+				exampleTranslation: "My brother is tall.",
+			},
+			{
+				id: "es-v-hermana",
+				word: "hermana",
+				translation: "sister",
+				pronunciation: "ehr-MAH-nah",
+				partOfSpeech: "noun",
+				exampleSentence: "Mi hermana es inteligente.",
+				exampleTranslation: "My sister is intelligent.",
+			},
+			{
+				id: "es-v-padre",
+				word: "padre",
+				translation: "father",
+				pronunciation: "PAH-dreh",
+				partOfSpeech: "noun",
+				exampleSentence: "Mi padre trabaja mucho.",
+				exampleTranslation: "My father works a lot.",
+			},
+		],
+		phrases: [
+			{
+				id: "es-p-ff-1",
+				text: "¿Cuántos años tienes?",
+				translation: "How old are you?",
+				context: "Informal conversation with friends",
+				pronunciation: "KWAIN-tohs AH-nyohs tee-EH-nehss",
+			},
+		],
+		goals: [
+			{
+				id: "es-ff-goal-1",
+				description: "Name family members in Spanish",
+				icon: "👨‍👩‍👧‍👦",
+				type: "speak",
+			},
+			{
+				id: "es-ff-goal-2",
+				description: "Ask and tell age",
+				icon: "🎂",
+				type: "speak",
+			},
+		],
+		xpReward: 15,
+		estimatedTimeMinutes: 4,
+		aiTeacherPrompt: {
+			role: "Beginner Spanish Teacher",
+			personality: "Warm and family-oriented",
+			instructions: [
+				"Introduce family vocabulary: madre, padre, hermano, hermana.",
+				"Practice describing family members with simple adjectives.",
+				"Ask and answer about age and relationships.",
+			],
+			vocabularyFocus: ["hermano", "hermana", "padre", "madre", "familia"],
+			scenario: "Talking about family at a dinner party",
+			openingLine: "Hablemos de tu familia. ¿Tienes hermanos?",
+			closingLine: "¡Qué familia tan bonita! Gracias por compartir.",
+		},
+		image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&auto=format&fit=crop",
+	},
+
+	// ═════════════════════════════════════════════════════════════════════════════
+	// FRENCH — Extended
+	// ═════════════════════════════════════════════════════════════════════════════
+
+	"fr-daily-life": {
+		id: "fr-daily-life",
+		unitId: "fr-basics",
+		title: "Daily Life",
+		description: "Discuss routines, meals, and daily schedules in French.",
+		order: 4,
+		activities: [
+			mc(
+				"fr-dl-1",
+				"Select the correct phrase",
+				"How do you ask 'What time is it?' in French?",
+				["Quelle heure est-il?", "Combien ça coûte?", "Où est...?", "Comment ça va?"],
+				0,
+				"'Quelle heure est-il?' is the standard way to ask for the time in French."
+			),
+			tr(
+				"fr-dl-2",
+				"Translate to French",
+				"I eat breakfast at eight",
+				"en",
+				"fr",
+				"Je prends le petit déjeuner à huit heures",
+				["Je mange le petit déjeuner à huit heures"]
+			),
+			mc(
+				"fr-dl-3",
+				"Choose the best response",
+				"Someone asks 'Comment vas-tu?' What do you reply if you are fine?",
+				["Merci", "Je vais bien, merci", "Excusez-moi", "Je ne comprends pas"],
+				1,
+				"'Je vais bien, merci' means 'I am fine, thanks' — a natural reply."
+			),
+		],
+		vocabulary: [
+			{
+				id: "fr-v-heure",
+				word: "heure",
+				translation: "hour / time",
+				pronunciation: "uhr",
+				partOfSpeech: "noun",
+				exampleSentence: "Quelle heure est-il?",
+				exampleTranslation: "What time is it?",
+			},
+			{
+				id: "fr-v-petitdejeuner",
+				word: "petit déjeuner",
+				translation: "breakfast",
+				pronunciation: "puh-tee day-zhuh-nay",
+				partOfSpeech: "noun",
+				exampleSentence: "Je prends le petit déjeuner à huit heures.",
+				exampleTranslation: "I have breakfast at eight o'clock.",
+			},
+			{
+				id: "fr-v-bien",
+				word: "bien",
+				translation: "well / fine",
+				pronunciation: "byan",
+				partOfSpeech: "adverb",
+				exampleSentence: "Je vais bien, merci.",
+				exampleTranslation: "I am fine, thanks.",
+			},
+		],
+		phrases: [
+			{
+				id: "fr-p-dl-1",
+				text: "À quelle heure...?",
+				translation: "At what time...?",
+				context: "Asking about schedule",
+				pronunciation: "ah kehl uhr",
+			},
+		],
+		goals: [
+			{
+				id: "fr-dl-goal-1",
+				description: "Ask and tell the time in French",
+				icon: "🕒",
+				type: "speak",
+			},
+			{
+				id: "fr-dl-goal-2",
+				description: "Talk about your daily meals",
+				icon: "🥐",
+				type: "speak",
+			},
+		],
+		xpReward: 15,
+		estimatedTimeMinutes: 4,
+		aiTeacherPrompt: {
+			role: "Beginner French Teacher",
+			personality: "Elegant and relatable",
+			instructions: [
+				"Introduce time-telling in French.",
+				"Talk about daily routines and meals.",
+				"Practice asking 'How are you?' and replying.",
+			],
+			vocabularyFocus: ["heure", "petit déjeuner", "bien", "déjeuner", "dîner"],
+			scenario: "Describing a typical day in Paris",
+			openingLine: "Parlons de ta journée. À quelle heure te réveilles-tu?",
+			closingLine: "C'était charmant! Maintenant tu peux décrire ta journée.",
+		},
+		image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&auto=format&fit=crop",
+	},
+
+	"fr-at-the-cafe": {
+		id: "fr-at-the-cafe",
+		unitId: "fr-basics",
+		title: "At the Café",
+		description: "Order at a French café, ask for recommendations, and pay.",
+		order: 5,
+		activities: [
+			mc(
+				"fr-cf-1",
+				"Select the correct phrase",
+				"You want to order a coffee. What do you say?",
+				["Une table, s'il vous plaît", "Un café, s'il vous plaît", "L'addition, s'il vous plaît", "Où sont les toilettes?"],
+				1,
+				"'Un café, s'il vous plaît' is the classic way to order coffee in France."
+			),
+			tr(
+				"fr-cf-2",
+				"Translate to French",
+				"The check, please",
+				"en",
+				"fr",
+				"L'addition, s'il vous plaît",
+				["L'addition"]
+			),
+			mc(
+				"fr-cf-3",
+				"Choose the best response",
+				"The waiter asks 'Vous désirez autre chose?' What do you say if you are finished?",
+				["Oui, s'il vous plaît", "Non, c'est tout, merci", "Excusez-moi", "Je ne comprends pas"],
+				1,
+				"'Non, c'est tout, merci' means 'No, that's all, thanks' — a polite way to finish ordering."
+			),
+		],
+		vocabulary: [
+			{
+				id: "fr-v-cafe",
+				word: "café",
+				translation: "coffee",
+				pronunciation: "kah-FAY",
+				partOfSpeech: "noun",
+				exampleSentence: "Un café noir, s'il vous plaît.",
+				exampleTranslation: "A black coffee, please.",
+			},
+			{
+				id: "fr-v-addition",
+				word: "addition",
+				translation: "bill / check",
+				pronunciation: "ah-dee-SYOHN",
+				partOfSpeech: "noun",
+				exampleSentence: "L'addition, s'il vous plaît.",
+				exampleTranslation: "The check, please.",
+			},
+			{
+				id: "fr-v-table",
+				word: "table",
+				translation: "table",
+				pronunciation: "TAH-bluh",
+				partOfSpeech: "noun",
+				exampleSentence: "Une table pour deux, s'il vous plaît.",
+				exampleTranslation: "A table for two, please.",
+			},
+		],
+		phrases: [
+			{
+				id: "fr-p-cf-1",
+				text: "Vous désirez autre chose?",
+				translation: "Would you like anything else?",
+				context: "Waiter asking if you want more",
+				pronunciation: "voo day-zee-ray ohtr shohss",
+			},
+		],
+		goals: [
+			{
+				id: "fr-cf-goal-1",
+				description: "Order confidently at a French café",
+				icon: "☕",
+				type: "speak",
+			},
+			{
+				id: "fr-cf-goal-2",
+				description: "Ask for and pay the bill",
+				icon: "🧾",
+				type: "speak",
+			},
+		],
+		xpReward: 15,
+		estimatedTimeMinutes: 4,
+		aiTeacherPrompt: {
+			role: "Beginner French Teacher",
+			personality: "Chic and welcoming",
+			instructions: [
+				"Set the scene at a Parisian café.",
+				"Practice ordering drinks and pastries.",
+				"Teach how to ask for the bill politely.",
+			],
+			vocabularyFocus: ["café", "addition", "table", "s'il vous plaît", "merci"],
+			scenario: "Having coffee at a café near the Eiffel Tower",
+			openingLine: "Bienvenue au café! Qu'est-ce que je vous sers?",
+			closingLine: "Avec plaisir! Bonne journée et à bientôt.",
+		},
+		image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&auto=format&fit=crop",
+	},
+
+	"fr-shopping": {
+		id: "fr-shopping",
+		unitId: "fr-basics",
+		title: "Shopping",
+		description: "Ask for prices, sizes, and make purchases in French.",
+		order: 6,
+		activities: [
+			mc(
+				"fr-sh-1",
+				"Select the correct phrase",
+				"How do you ask 'How much does it cost?' in French?",
+				["Quelle heure est-il?", "Combien ça coûte?", "Où est...?", "Comment allez-vous?"],
+				1,
+				"'Combien ça coûte?' is the standard way to ask for the price in French."
+			),
+			tr(
+				"fr-sh-2",
+				"Translate to French",
+				"I would like to buy this",
+				"en",
+				"fr",
+				"J'aimerais acheter ceci",
+				["Je voudrais acheter ceci"]
+			),
+			mc(
+				"fr-sh-3",
+				"Choose the best response",
+				"The shop assistant asks 'Vous cherchez quelque chose?' What do you say if you are just looking?",
+				["Oui, s'il vous plaît", "Non, je regarde, merci", "Excusez-moi", "Je ne comprends pas"],
+				1,
+				"'Non, je regarde, merci' means 'No, I am just looking, thanks' — a polite reply."
+			),
+		],
+		vocabulary: [
+			{
+				id: "fr-v-coute",
+				word: "coûte",
+				translation: "costs",
+				pronunciation: "koot",
+				partOfSpeech: "verb",
+				exampleSentence: "Combien ça coûte?",
+				exampleTranslation: "How much does it cost?",
+			},
+			{
+				id: "fr-v-acheter",
+				word: "acheter",
+				translation: "to buy",
+				pronunciation: "ahsh-tay",
+				partOfSpeech: "verb",
+				exampleSentence: "J'aimerais acheter cette chemise.",
+				exampleTranslation: "I would like to buy this shirt.",
+			},
+			{
+				id: "fr-v-taille",
+				word: "taille",
+				translation: "size",
+				pronunciation: "tah-yuh",
+				partOfSpeech: "noun",
+				exampleSentence: "Quelle taille faites-vous?",
+				exampleTranslation: "What size do you wear?",
+			},
+		],
+		phrases: [
+			{
+				id: "fr-p-sh-1",
+				text: "Je peux l'essayer?",
+				translation: "Can I try it on?",
+				context: "In a clothing store",
+				pronunciation: "zhuh puh lay-say-yay",
+			},
+		],
+		goals: [
+			{
+				id: "fr-sh-goal-1",
+				description: "Ask for prices in French",
+				icon: "💰",
+				type: "speak",
+			},
+			{
+				id: "fr-sh-goal-2",
+				description: "Shop for clothes and souvenirs",
+				icon: "🛍️",
+				type: "speak",
+			},
+		],
+		xpReward: 20,
+		estimatedTimeMinutes: 5,
+		aiTeacherPrompt: {
+			role: "Beginner French Teacher",
+			personality: "Stylish and helpful",
+			instructions: [
+				"Set the scene at a French boutique.",
+				"Practice asking prices and trying on clothes.",
+				"Teach polite phrases for buying and browsing.",
+			],
+			vocabularyFocus: ["coûte", "acheter", "taille", "cher", "pas cher"],
+			scenario: "Shopping on the Champs-Élysées",
+			openingLine: "Allons faire du shopping! Qu'est-ce que tu aimerais acheter?",
+			closingLine: "Excellent! Tu as trouvé de belles choses. À bientôt!",
+		},
+		image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
+	},
+
+	"fr-family-friends": {
+		id: "fr-family-friends",
+		unitId: "fr-basics",
+		title: "Family & Friends",
+		description: "Discuss family members, relationships, and describe people in French.",
+		order: 7,
+		activities: [
+			mc(
+				"fr-ff-1",
+				"Select the correct word",
+				"What does 'frère' mean?",
+				["Father", "Brother", "Sister", "Mother"],
+				1,
+				"'Frère' means 'brother' in French."
+			),
+			tr(
+				"fr-ff-2",
+				"Translate to French",
+				"I have two sisters",
+				"en",
+				"fr",
+				"J'ai deux sœurs",
+				["J'ai deux soeurs"]
+			),
+			mc(
+				"fr-ff-3",
+				"Choose the best phrase",
+				"How do you ask 'How old are you?' informally in French?",
+				["Quel âge as-tu?", "Quel âge avez-vous?", "Où habites-tu?", "Comment t'appelles-tu?"],
+				0,
+				"'Quel âge as-tu?' is the informal way to ask someone's age in French."
+			),
+		],
+		vocabulary: [
+			{
+				id: "fr-v-frere",
+				word: "frère",
+				translation: "brother",
+				pronunciation: "frehr",
+				partOfSpeech: "noun",
+				exampleSentence: "Mon frère est grand.",
+				exampleTranslation: "My brother is tall.",
+			},
+			{
+				id: "fr-v-soeur",
+				word: "sœur",
+				translation: "sister",
+				pronunciation: "sur",
+				partOfSpeech: "noun",
+				exampleSentence: "Ma sœur est gentille.",
+				exampleTranslation: "My sister is kind.",
+			},
+			{
+				id: "fr-v-pere",
+				word: "père",
+				translation: "father",
+				pronunciation: "pehr",
+				partOfSpeech: "noun",
+				exampleSentence: "Mon père travaille beaucoup.",
+				exampleTranslation: "My father works a lot.",
+			},
+		],
+		phrases: [
+			{
+				id: "fr-p-ff-1",
+				text: "Quel âge as-tu?",
+				translation: "How old are you?",
+				context: "Informal conversation with friends",
+				pronunciation: "kehl ahzh ah too",
+			},
+		],
+		goals: [
+			{
+				id: "fr-ff-goal-1",
+				description: "Name family members in French",
+				icon: "👨‍👩‍👧‍👦",
+				type: "speak",
+			},
+			{
+				id: "fr-ff-goal-2",
+				description: "Ask and tell age",
+				icon: "🎂",
+				type: "speak",
+			},
+		],
+		xpReward: 15,
+		estimatedTimeMinutes: 4,
+		aiTeacherPrompt: {
+			role: "Beginner French Teacher",
+			personality: "Warm and family-oriented",
+			instructions: [
+				"Introduce family vocabulary: mère, père, frère, sœur.",
+				"Practice describing family members with simple adjectives.",
+				"Ask and answer about age and relationships.",
+			],
+			vocabularyFocus: ["frère", "sœur", "père", "mère", "famille"],
+			scenario: "Talking about family at a dinner party",
+			openingLine: "Parlons de ta famille. As-tu des frères et sœurs?",
+			closingLine: "Quelle belle famille! Merci de partager.",
+		},
+		image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&auto=format&fit=crop",
+	},
+
+	// ═════════════════════════════════════════════════════════════════════════════
+	// JAPANESE — Extended
+	// ═════════════════════════════════════════════════════════════════════════════
+
+	"ja-daily-life": {
+		id: "ja-daily-life",
+		unitId: "ja-basics",
+		title: "Daily Life",
+		description: "Talk about routines, meals, and schedules in Japanese.",
+		order: 4,
+		activities: [
+			mc(
+				"ja-dl-1",
+				"Select the correct phrase",
+				"You meet someone at noon. What do you say?",
+				["おはようございます", "こんにちは", "こんばんは", "さようなら"],
+				1,
+				"'こんにちは' is used from late morning through afternoon."
+			),
+			tr(
+				"ja-dl-2",
+				"Translate to Japanese",
+				"I wake up at seven",
+				"en",
+				"ja",
+				"七時に起きます",
+				["7時に起きます"]
+			),
+			mc(
+				"ja-dl-3",
+				"Choose the best response",
+				"Someone asks 'お元気ですか' What do you say if you are fine?",
+				["はい、元気です", "すみません", "わかりません", "お願いします"],
+				0,
+				"'はい、元気です' means 'Yes, I am fine' — a natural reply."
+			),
+		],
+		vocabulary: [
+			{
+				id: "ja-v-okimasu",
+				word: "起きます",
+				translation: "to wake up",
+				pronunciation: "oh-kee-mahs",
+				partOfSpeech: "verb",
+				exampleSentence: "朝七時に起きます。",
+				exampleTranslation: "I wake up at 7 in the morning.",
+			},
+			{
+				id: "ja-v-gohan",
+				word: "ご飯",
+				translation: "meal / rice",
+				pronunciation: "goh-hahn",
+				partOfSpeech: "noun",
+				exampleSentence: "ご飯を食べます。",
+				exampleTranslation: "I eat a meal.",
+			},
+			{
+				id: "ja-v-genki",
+				word: "元気",
+				translation: "fine / healthy",
+				pronunciation: "gehn-kee",
+				partOfSpeech: "adjective",
+				exampleSentence: "元気ですか。",
+				exampleTranslation: "How are you? / Are you fine?",
+			},
+		],
+		phrases: [
+			{
+				id: "ja-p-dl-1",
+				text: "何時ですか。",
+				translation: "What time is it?",
+				context: "Asking for the time",
+				pronunciation: "nan-gee dehss kah",
+			},
+		],
+		goals: [
+			{
+				id: "ja-dl-goal-1",
+				description: "Talk about your daily routine",
+				icon: "🕒",
+				type: "speak",
+			},
+			{
+				id: "ja-dl-goal-2",
+				description: "Greet people at the right time of day",
+				icon: "☀️",
+				type: "speak",
+			},
+		],
+		xpReward: 15,
+		estimatedTimeMinutes: 4,
+		aiTeacherPrompt: {
+			role: "Beginner Japanese Teacher",
+			personality: "Gentle and practical",
+			instructions: [
+				"Introduce daily routine vocabulary.",
+				"Talk about meals and schedules.",
+				"Practice asking 'How are you?' and replying.",
+			],
+			vocabularyFocus: ["起きます", "ご飯", "元気", "朝", "夜"],
+			scenario: "Describing a typical day in Tokyo",
+			openingLine: "日常のことを話しましょう。何時に起きますか。",
+			closingLine: "素晴らしいです! これで日常を話せますね。",
+		},
+		image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&auto=format&fit=crop",
+	},
+
+	"ja-at-the-cafe": {
+		id: "ja-at-the-cafe",
+		unitId: "ja-basics",
+		title: "At the Café",
+		description: "Order drinks and food, ask for recommendations, and pay in Japanese.",
+		order: 5,
+		activities: [
+			mc(
+				"ja-cf-1",
+				"Select the correct phrase",
+				"You want to order coffee. What do you say?",
+				["テーブルをお願いします", "コーヒーをください", "お会計をお願いします", "トイレはどこですか"],
+				1,
+				"'コーヒーをください' is a polite way to order coffee in Japanese."
+			),
+			tr(
+				"ja-cf-2",
+				"Translate to Japanese",
+				"The check, please",
+				"en",
+				"ja",
+				"お会計をお願いします",
+				["お会計ください"]
+			),
+			mc(
+				"ja-cf-3",
+				"Choose the best response",
+				"The waiter asks 'ほかになにかありますか' What do you say if you are finished?",
+				["はい、お願いします", "いいえ、けっこうです", "すみません", "わかりません"],
+				1,
+				"'いいえ、けっこうです' means 'No, thank you' — a polite way to decline."
+			),
+		],
+		vocabulary: [
+			{
+				id: "ja-v-kohi",
+				word: "コーヒー",
+				translation: "coffee",
+				pronunciation: "koh-hee",
+				partOfSpeech: "noun",
+				exampleSentence: "コーヒーを一杯ください。",
+				exampleTranslation: "One cup of coffee, please.",
+			},
+			{
+				id: "ja-v-okaikei",
+				word: "お会計",
+				translation: "bill / check",
+				pronunciation: "oh-kah-ee-keh",
+				partOfSpeech: "noun",
+				exampleSentence: "お会計をお願いします。",
+				exampleTranslation: "The check, please.",
+			},
+			{
+				id: "ja-v-teburu",
+				word: "テーブル",
+				translation: "table",
+				pronunciation: "teh-boo-roo",
+				partOfSpeech: "noun",
+				exampleSentence: "テーブルを予約しました。",
+				exampleTranslation: "I reserved a table.",
+			},
+		],
+		phrases: [
+			{
+				id: "ja-p-cf-1",
+				text: "ほかになにかありますか。",
+				translation: "Is there anything else?",
+				context: "Waiter asking if you want more",
+				pronunciation: "hoh-kah nee nah-kee mahss kah",
+			},
+		],
+		goals: [
+			{
+				id: "ja-cf-goal-1",
+				description: "Order food and drinks at a café",
+				icon: "☕",
+				type: "speak",
+			},
+			{
+				id: "ja-cf-goal-2",
+				description: "Ask for and pay the bill",
+				icon: "🧾",
+				type: "speak",
+			},
+		],
+		xpReward: 15,
+		estimatedTimeMinutes: 4,
+		aiTeacherPrompt: {
+			role: "Beginner Japanese Teacher",
+			personality: "Polite and welcoming",
+			instructions: [
+				"Set the scene at a Japanese café.",
+				"Practice ordering drinks and food.",
+				"Teach how to ask for the bill politely.",
+			],
+			vocabularyFocus: ["コーヒー", "お会計", "テーブル", "ください", "お願いします"],
+			scenario: "Having coffee at a kissaten in Kyoto",
+			openingLine: "いらっしゃいませ! 何になさいますか。",
+			closingLine: "ありがとうございました。またのお越しをお待ちしております。",
+		},
+		image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&auto=format&fit=crop",
+	},
+
+	"ja-shopping": {
+		id: "ja-shopping",
+		unitId: "ja-basics",
+		title: "Shopping",
+		description: "Ask prices, find items, and pay in Japanese.",
+		order: 6,
+		activities: [
+			mc(
+				"ja-sh-1",
+				"Select the correct phrase",
+				"How do you ask 'How much is this?' in Japanese?",
+				["何時ですか", "これはいくらですか", "どこですか", "お元気ですか"],
+				1,
+				"'これはいくらですか' is the standard way to ask for the price in Japanese."
+			),
+			tr(
+				"ja-sh-2",
+				"Translate to Japanese",
+				"I would like to buy this",
+				"en",
+				"ja",
+				"これを買いたいです",
+				["これを購入したいです"]
+			),
+			mc(
+				"ja-sh-3",
+				"Choose the best response",
+				"The shop assistant asks '袋はいりますか' What do you say if you don't need one?",
+				["はい、お願いします", "いいえ、けっこうです", "すみません", "わかりません"],
+				1,
+				"'いいえ、けっこうです' politely declines the offer of a bag."
+			),
+		],
+		vocabulary: [
+			{
+				id: "ja-v-ikura",
+				word: "いくら",
+				translation: "how much",
+				pronunciation: "ee-koo-rah",
+				partOfSpeech: "other",
+				exampleSentence: "これはいくらですか。",
+				exampleTranslation: "How much is this?",
+			},
+			{
+				id: "ja-v-kau",
+				word: "買う",
+				translation: "to buy",
+				pronunciation: "kah-oo",
+				partOfSpeech: "verb",
+				exampleSentence: "本を買います。",
+				exampleTranslation: "I buy a book.",
+			},
+			{
+				id: "ja-v-fukuro",
+				word: "袋",
+				translation: "bag",
+				pronunciation: "foo-koo-roh",
+				partOfSpeech: "noun",
+				exampleSentence: "袋はいりますか。",
+				exampleTranslation: "Do you need a bag?",
+			},
+		],
+		phrases: [
+			{
+				id: "ja-p-sh-1",
+				text: "試着してもいいですか。",
+				translation: "Can I try it on?",
+				context: "In a clothing store",
+				pronunciation: "shee-chah-koo shee-teh moh-ee dehss kah",
+			},
+		],
+		goals: [
+			{
+				id: "ja-sh-goal-1",
+				description: "Ask for prices in Japanese",
+				icon: "💰",
+				type: "speak",
+			},
+			{
+				id: "ja-sh-goal-2",
+				description: "Shop for items and pay",
+				icon: "🛍️",
+				type: "speak",
+			},
+		],
+		xpReward: 20,
+		estimatedTimeMinutes: 5,
+		aiTeacherPrompt: {
+			role: "Beginner Japanese Teacher",
+			personality: "Helpful and patient",
+			instructions: [
+				"Set the scene at a Japanese department store.",
+				"Practice asking prices and trying on clothes.",
+				"Teach polite phrases for buying and declining.",
+			],
+			vocabularyFocus: ["いくら", "買う", "袋", "高い", "安い"],
+			scenario: "Shopping at a depachika in Osaka",
+			openingLine: "買い物に行きましょう。何を買いたいですか。",
+			closingLine: "いい買い物ができましたね。また一緒に行きましょう。",
+		},
+		image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
+	},
+
+	"ja-family-friends": {
+		id: "ja-family-friends",
+		unitId: "ja-basics",
+		title: "Family & Friends",
+		description: "Talk about family members and describe people in Japanese.",
+		order: 7,
+		activities: [
+			mc(
+				"ja-ff-1",
+				"Select the correct word",
+				"What does '兄' (ani) mean?",
+				["Father", "Older brother", "Younger brother", "Mother"],
+				1,
+				"'兄' (ani) means 'older brother' in Japanese."
+			),
+			tr(
+				"ja-ff-2",
+				"Translate to Japanese",
+				"I have two sisters",
+				"en",
+				"ja",
+				"妹が二人います",
+				["姉が二人います"]
+			),
+			mc(
+				"ja-ff-3",
+				"Choose the best phrase",
+				"How do you ask 'How old are you?' politely in Japanese?",
+				["おいくつですか", "何歳ですか", "お元気ですか", "お名前は"],
+				0,
+				"'おいくつですか' is the polite way to ask someone's age in Japanese."
+			),
+		],
+		vocabulary: [
+			{
+				id: "ja-v-ani",
+				word: "兄",
+				translation: "older brother",
+				pronunciation: "ah-nee",
+				partOfSpeech: "noun",
+				exampleSentence: "兄は大学生です。",
+				exampleTranslation: "My older brother is a university student.",
+			},
+			{
+				id: "ja-v-ane",
+				word: "姉",
+				translation: "older sister",
+				pronunciation: "ah-neh",
+				partOfSpeech: "noun",
+				exampleSentence: "姉は優しいです。",
+				exampleTranslation: "My older sister is kind.",
+			},
+			{
+				id: "ja-v-chichi",
+				word: "父",
+				translation: "father",
+				pronunciation: "chee-chee",
+				partOfSpeech: "noun",
+				exampleSentence: "父は会社員です。",
+				exampleTranslation: "My father is a company employee.",
+			},
+		],
+		phrases: [
+			{
+				id: "ja-p-ff-1",
+				text: "おいくつですか。",
+				translation: "How old are you? (polite)",
+				context: "Polite conversation",
+				pronunciation: "oh-ee-koo-tsoo dehss kah",
+			},
+		],
+		goals: [
+			{
+				id: "ja-ff-goal-1",
+				description: "Name family members in Japanese",
+				icon: "👨‍👩‍👧‍👦",
+				type: "speak",
+			},
+			{
+				id: "ja-ff-goal-2",
+				description: "Ask and tell age politely",
+				icon: "🎂",
+				type: "speak",
+			},
+		],
+		xpReward: 15,
+		estimatedTimeMinutes: 4,
+		aiTeacherPrompt: {
+			role: "Beginner Japanese Teacher",
+			personality: "Warm and family-oriented",
+			instructions: [
+				"Introduce family vocabulary: 父, 母, 兄, 姉, 弟, 妹.",
+				"Practice describing family members with simple adjectives.",
+				"Ask and answer about age and relationships politely.",
+			],
+			vocabularyFocus: ["兄", "姉", "父", "母", "家族"],
+			scenario: "Talking about family at a dinner party",
+			openingLine: "家族のことを話しましょう。兄弟はいますか。",
+			closingLine: "素晴らしい家族ですね。ありがとうございました。",
+		},
+		image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&auto=format&fit=crop",
+	},
 }
 
 // ─── Lookup helpers ──────────────────────────────────────────────────────────

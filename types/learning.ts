@@ -56,6 +56,7 @@ export interface Lesson {
 	xpReward: number
 	estimatedTimeMinutes: number
 	aiTeacherPrompt?: AITeacherPrompt // Optional for audio/video AI lessons
+	image?: string // Lesson illustration URL
 }
 
 // ─── Activities ──────────────────────────────────────────────────────────────
